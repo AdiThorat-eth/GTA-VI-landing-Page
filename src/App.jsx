@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/all";
 import React, { useEffect } from "react";
 
 import Loading from "./Components/Loading";
-import NavBar from "./Components/NavBar";
+import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import FVideo from "./Components/FVideo";
 import Jason from "./Components/Jason";
@@ -49,7 +49,7 @@ const App = () => {
   return (
     <main>
       <Loading />
-      <NavBar />
+      <Navbar />
       <Hero />
 
       <FVideo />
