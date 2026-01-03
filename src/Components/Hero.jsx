@@ -1,9 +1,8 @@
-import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-import Upcoming from "./Upcoming";
 import { useMaskSettings } from "../../constants";
+import Upcoming from "./Upcoming";
 
 const Hero = () => {
   const { initialMaskPos, initialMaskSize, maskPos, maskSize } =
@@ -14,14 +13,10 @@ const Hero = () => {
       maskPosition: initialMaskPos,
       maskSize: initialMaskSize,
     });
-    gsap.set(".mask-logo", {
-      marginTop: "-100vh",
-      opacity: 0,
-    });
 
-    gsap.set(".entrance-message", {
-      marginTop: "0vh",
-    });
+    gsap.set(".mask-logo", { marginTop: "-100vh", opacity: 0 });
+
+    gsap.set(".entrance-message", { marginTop: "0vh" });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -30,14 +25,12 @@ const Hero = () => {
         scrub: 2.5,
         end: "+=200%",
         pin: true,
-        // markers: true,
       },
     });
 
     tl.to(".fade-out", { opacity: 0, ease: "power1.inOut" })
       .to(".scale-out", { scale: 1, ease: "power1.inOut" })
-      .to(".mask-wrapper", { maskSize: maskSize, ease: "power1.inOut" }, "<")
-      // by applying "<", mask will start at the same time as the title
+      .to(".mask-wrapper", { maskSize, ease: "power1.inOut" }, "<")
       .to(".mask-wrapper", { opacity: 0 })
       .to(
         ".overlay-logo",
@@ -49,7 +42,6 @@ const Hero = () => {
         },
         "<"
       )
-      // by applying "<", overlay logo will start at the same time as the mask
       .to(
         ".entrance-message",
         {
@@ -59,7 +51,6 @@ const Hero = () => {
             "radial-gradient(circle at 50% 0vh, black 50%, transparent 100%)",
         },
         "<"
-        // it is used to reveal the text
       );
   });
 
@@ -95,11 +86,7 @@ const Hero = () => {
       </div>
 
       <div className="fake-logo-wrapper">
-        <img
-          src="/images/big-hero-text.svg"
-          alt="overlay logo"
-          className="overlay-logo"
-        />
+        <img src="/images/big-hero-text.svg" className="overlay-logo" />
       </div>
 
       <Upcoming />

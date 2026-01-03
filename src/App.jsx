@@ -1,23 +1,20 @@
-import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import Lenis from "lenis";
+import React, { useEffect } from "react";
 
+import NavBar from "./Components/NavBar";
 import Hero from "./Components/Hero";
-import Navbar from "./Components/Navbar";
 import FVideo from "./Components/FVideo";
 import Jason from "./Components/Jason";
 import SVideo from "./Components/SVideo";
 import Lucia from "./Components/Lucia";
 import PostCard from "./Components/PostCard";
-import Outro from "./Outro";
 import Final from "./Components/Final";
+import Outro from "./Components/Outro";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App = () => {
-  const rafRef = useRef(null);
-
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -50,12 +47,15 @@ const App = () => {
 
   return (
     <main>
-      <Navbar />
+      <NavBar />
       <Hero />
+
       <FVideo />
       <Jason />
+
       <SVideo />
       <Lucia />
+
       <PostCard />
       <Final />
       <Outro />

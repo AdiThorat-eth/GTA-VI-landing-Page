@@ -25,7 +25,7 @@ const Outro = () => {
 
         <div>
           <h3 className="gradient-title">
-            Coming <br /> in <br /> 2026
+            Coming <br /> IN <br /> 2026
           </h3>
         </div>
 
