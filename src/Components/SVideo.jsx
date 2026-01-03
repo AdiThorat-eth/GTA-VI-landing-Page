@@ -6,41 +6,31 @@ const SVideo = () => {
   const videoRef = useRef();
 
   useGSAP(() => {
-    gsap.set(".lucia", { marginTop: "-60vh", opacity: 0 });
+    gsap.set(".lucia", { marginTop: "-60vh" });
 
-    const setupTimeline = () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".lucia",
-          start: "top top",
-          end: "bottom top",
-          scrub: 2,
-          pin: true,
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".lucia",
+        start: "top top",
+        end: "bottom top",
+        scrub: 2,
+        pin: true,
+      },
+    });
+
+    tl.to(".lucia", { duration: 1, ease: "power1.inOut" });
+
+    videoRef.current.onloadedmetadata = () => {
+      tl.to(
+        videoRef.current,
+        {
+          currentTime: videoRef.current.duration,
+          duration: 3,
+          ease: "power1.inOut",
         },
-      });
-
-      tl.to(".lucia", { opacity: 1, duration: 1, ease: "power1.inOut" });
-
-      if (videoRef.current) {
-        tl.to(
-          videoRef.current,
-          {
-            currentTime: videoRef.current.duration,
-            duration: 3,
-            ease: "power1.inOut",
-          },
-          "<"
-        );
-      }
+        "<"
+      );
     };
-
-    if (videoRef.current) {
-      if (videoRef.current.readyState >= 1) {
-        setupTimeline();
-      } else {
-        videoRef.current.onloadedmetadata = setupTimeline;
-      }
-    }
   });
 
   return (
@@ -52,7 +42,7 @@ const SVideo = () => {
           playsInline
           preload="auto"
           src="/videos/output2.mp4"
-          className="size-full object-cover s-vd"
+          className="size-full object-cover second-vd"
           style={{
             objectPosition: "15% 0%",
           }}

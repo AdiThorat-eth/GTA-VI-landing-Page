@@ -6,7 +6,7 @@ const FVideo = () => {
   const videoRef = useRef(null);
 
   useGSAP(() => {
-    gsap.set(".first-vd-wrapper", { marginTop: "-150vh", opacity: 0 });
+    gsap.set(".first-vd-wrapper", { marginTop: "-150vh" });
 
     const setupTimeline = () => {
       const tl = gsap.timeline({
@@ -25,7 +25,6 @@ const FVideo = () => {
         "<"
       );
       tl.to(".first-vd-wrapper", {
-        opacity: 1,
         duration: 2,
         ease: "power1.inOut",
       });
@@ -71,3 +70,4 @@ const FVideo = () => {
 };
 
 export default FVideo;
+// before
